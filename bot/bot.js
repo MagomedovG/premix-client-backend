@@ -29,9 +29,9 @@ bot.onText(/\/start/, async (msg) => {
           inline_keyboard: [
             [
               {
-                text: "🚀 Сделать заказ",
+                text: "Сделать заказ",
                 web_app: {
-                  url: "https://your-miniapp.vercel.app",
+                  url: "https://premix-client-bot.vercel.app",
                 },
               },
             ],
@@ -105,9 +105,9 @@ bot.on("message", async (msg) => {
         inline_keyboard: [
           [
             {
-              text: "🚀 Сделать заказ",
+              text: "Сделать заказ",
               web_app: {
-                url: "https://your-miniapp.vercel.app",
+                url: "https://premix-client-bot.vercel.app",
               },
             },
           ],
