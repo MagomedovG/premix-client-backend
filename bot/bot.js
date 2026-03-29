@@ -2,6 +2,8 @@ import TelegramBot from "node-telegram-bot-api";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
 
+const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+
 dotenv.config();
 
 export const bot = new TelegramBot(process.env.BOT_TOKEN, {
@@ -18,7 +20,7 @@ bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/user/${chatId}`);
+    const res = await fetch(`${BASE_URL}/api/user/${chatId}`);
 
     if (res.status === 200) {
       const data = await res.json();
@@ -82,7 +84,7 @@ bot.on("message", async (msg) => {
     state.address = msg.text;
 
     try {
-      await fetch("http://localhost:3000/api/user", {
+      await fetch(`${BASE_URL}/api/user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
