@@ -33,7 +33,7 @@ bot.onText(/\/start/, async (msg) => {
               {
                 text: "Сделать заказ",
                 web_app: {
-                  url: "https://premix-client-bot.vercel.app",
+                  url: process.env.FRONTEND_URL || "",
                 },
               },
             ],
@@ -109,7 +109,7 @@ bot.on("message", async (msg) => {
             {
               text: "Сделать заказ",
               web_app: {
-                url: "https://premix-client-bot.vercel.app",
+                url: process.env.FRONTEND_URL || "",
               },
             },
           ],
