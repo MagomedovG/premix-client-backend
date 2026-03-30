@@ -20,7 +20,7 @@ bot.setChatMenuButton({
     type: "web_app",
     text: "Открыть приложение",
     web_app: {
-      url: process.env.FRONTEND_URL || "",
+      url: "https://premix-client-bot.vercel.app/",
     },
   },
 });
@@ -43,17 +43,16 @@ bot.onText(/\/start/, async (msg) => {
 
       return bot.sendMessage(chatId, "С возвращением!", {
         reply_markup: {
-          keyboard: [
+          inline_keyboard: [
             [
               {
                 text: "Сделать заказ",
                 web_app: {
-                  url: process.env.FRONTEND_URL || "",
+                  url: "https://premix-client-bot.vercel.app/",
                 },
               },
             ],
           ],
-          resize_keyboard: true,
         },
       });
     }
@@ -120,17 +119,16 @@ bot.on("message", async (msg) => {
 
     return bot.sendMessage(chatId, "✅ Данные сохранены!", {
       reply_markup: {
-        keyboard: [
+        inline_keyboard: [
           [
             {
               text: "Сделать заказ",
               web_app: {
-                url: process.env.FRONTEND_URL || "",
+                url: "https://premix-client-bot.vercel.app/",
               },
             },
           ],
         ],
-        resize_keyboard: true,
       },
     });
   }
