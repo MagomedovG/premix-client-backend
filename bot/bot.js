@@ -10,6 +10,21 @@ export const bot = new TelegramBot(process.env.BOT_TOKEN, {
   polling: true,
 });
 
+// set persistent menu button (важно для корректной передачи tgId)
+bot.setMyCommands([
+  { command: "start", description: "Запустить бота" }
+]);
+
+bot.setChatMenuButton({
+  menu_button: {
+    type: "web_app",
+    text: "Открыть приложение",
+    web_app: {
+      url: process.env.FRONTEND_URL || "",
+    },
+  },
+});
+
 export const ADMIN_ID = process.env.ADMIN_ID;
 
 // simple in-memory state for onboarding
@@ -28,7 +43,7 @@ bot.onText(/\/start/, async (msg) => {
 
       return bot.sendMessage(chatId, "С возвращением!", {
         reply_markup: {
-          inline_keyboard: [
+          keyboard: [
             [
               {
                 text: "Сделать заказ",
@@ -38,6 +53,7 @@ bot.onText(/\/start/, async (msg) => {
               },
             ],
           ],
+          resize_keyboard: true,
         },
       });
     }
@@ -104,7 +120,7 @@ bot.on("message", async (msg) => {
 
     return bot.sendMessage(chatId, "✅ Данные сохранены!", {
       reply_markup: {
-        inline_keyboard: [
+        keyboard: [
           [
             {
               text: "Сделать заказ",
@@ -114,6 +130,7 @@ bot.on("message", async (msg) => {
             },
           ],
         ],
+        resize_keyboard: true,
       },
     });
   }
