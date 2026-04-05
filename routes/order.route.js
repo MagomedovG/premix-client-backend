@@ -43,6 +43,20 @@ ${itemsText}
 
   await bot.sendMessage(ADMIN_ID, message);
 
+  // сообщение клиенту
+  const clientMessage = `
+ Ваша заявка оформлена
+
+ Дата: ${date}
+ Имя: ${user.name}
+
+${itemsText}
+
+ Сумма: ${total} руб.
+`;
+
+  await bot.sendMessage(tgId, clientMessage);
+
   res.json({ ok: true });
 });
 
